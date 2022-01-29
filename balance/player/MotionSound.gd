@@ -15,7 +15,6 @@ func _process(delta):
 		return
 
 	# checking components with abs helps fix comparing signed, negative 0 with Vector3.ZERO
-
 	var moving_in_x = abs(_player_body.velocity.x) > 0.03
 	var moving_in_z = abs(_player_body.velocity.z) > 0.03
 	var falling_in_y = _player_body.velocity.y < 0.03
