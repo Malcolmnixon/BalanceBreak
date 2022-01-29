@@ -74,7 +74,7 @@ script = ExtResource( 13 )
 
 [node name="GlideSound" type="AudioStreamPlayer" parent="." index="8"]
 stream = ExtResource( 15 )
-volume_db = 5.0
+volume_db = 8.0
 script = ExtResource( 13 )
 when_grounded = false
 when_falling = true
