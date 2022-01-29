@@ -33,7 +33,7 @@ script = ExtResource( 10 )
 [node name="Function_Pickup" parent="LeftHandController" index="1" instance=ExtResource( 5 )]
 
 [node name="Function_Jump_movement" parent="LeftHandController" index="2" instance=ExtResource( 6 )]
-jump_button_id = 1
+jump_button_id = 7
 
 [node name="Function_Direct_movement" parent="LeftHandController" index="3" instance=ExtResource( 7 )]
 max_speed = 4.0
