@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/grunt-hotp.ogg-68cd8c7337151afaa638da4f552e6800.oggstr"
+
+[deps]
+
+source_file="res://assets/custom/grunt-hotp.ogg"
+dest_files=[ "res://.import/grunt-hotp.ogg-68cd8c7337151afaa638da4f552e6800.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

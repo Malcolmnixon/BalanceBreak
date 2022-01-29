@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://addons/godot-openxr/scenes/first_person_controller_vr.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/godot-xr-tools/assets/LeftHand.tscn" type="PackedScene" id=2]
@@ -9,6 +9,12 @@
 [ext_resource path="res://addons/godot-xr-tools/functions/Function_Direct_movement.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/godot-xr-tools/functions/Function_Climb_movement.tscn" type="PackedScene" id=8]
 [ext_resource path="res://addons/godot-xr-tools/functions/Function_Glide_movement.tscn" type="PackedScene" id=9]
+[ext_resource path="res://balance/player/ClimbSound.gd" type="Script" id=10]
+[ext_resource path="res://assets/custom/grunt-hupt.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/custom/grunt-hotp.ogg" type="AudioStream" id=12]
+[ext_resource path="res://balance/player/MotionSound.gd" type="Script" id=13]
+[ext_resource path="res://assets/custom/grunt-hutt-hutt.ogg" type="AudioStream" id=14]
+[ext_resource path="res://assets/custom/wind.ogg" type="AudioStream" id=15]
 
 [node name="Player" instance=ExtResource( 1 )]
 
@@ -18,6 +24,11 @@ refresh_rate = 0.0
 
 [node name="LeftHand" parent="LeftHandController" index="0" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.05, 0.15 )
+
+[node name="ClimbSound" type="AudioStreamPlayer3D" parent="LeftHandController/LeftHand" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 0.05, -0.15 )
+stream = ExtResource( 12 )
+script = ExtResource( 10 )
 
 [node name="Function_Pickup" parent="LeftHandController" index="1" instance=ExtResource( 5 )]
 
@@ -31,6 +42,11 @@ canFly = false
 
 [node name="RightHand" parent="RightHandController" index="0" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, -0.05, 0.15 )
+
+[node name="ClimbSound" type="AudioStreamPlayer3D" parent="RightHandController/RightHand" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03, 0.05, -0.15 )
+stream = ExtResource( 11 )
+script = ExtResource( 10 )
 
 [node name="Function_Pickup" parent="RightHandController" index="1" instance=ExtResource( 5 )]
 
@@ -50,3 +66,18 @@ right_pickup = NodePath("../RightHandController/Function_Pickup")
 [node name="Function_Glide_movement" parent="." index="6" instance=ExtResource( 9 )]
 left_controller = null
 right_controller = null
+
+[node name="RunningSound" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource( 14 )
+volume_db = -5.0
+script = ExtResource( 13 )
+
+[node name="GlideSound" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource( 15 )
+volume_db = 5.0
+script = ExtResource( 13 )
+when_grounded = false
+when_falling = true
+
+[connection signal="has_picked_up" from="LeftHandController/Function_Pickup" to="LeftHandController/LeftHand/ClimbSound" method="_on_grab"]
+[connection signal="has_picked_up" from="RightHandController/Function_Pickup" to="RightHandController/RightHand/ClimbSound" method="_on_grab"]

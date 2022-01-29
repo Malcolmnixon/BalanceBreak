@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/squick.ogg-d54681a606a5e5b09d51d31b7227cb9a.oggstr"
+
+[deps]
+
+source_file="res://assets/custom/squick.ogg"
+dest_files=[ "res://.import/squick.ogg-d54681a606a5e5b09d51d31b7227cb9a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

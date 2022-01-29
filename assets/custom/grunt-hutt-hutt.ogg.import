@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/grunt-hutt-hutt.ogg-0e915464206296ff7f386e2bd3f03f8f.oggstr"
+
+[deps]
+
+source_file="res://assets/custom/grunt-hutt-hutt.ogg"
+dest_files=[ "res://.import/grunt-hutt-hutt.ogg-0e915464206296ff7f386e2bd3f03f8f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
