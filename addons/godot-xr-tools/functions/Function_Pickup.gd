@@ -56,7 +56,7 @@ func _get_linear_velocity():
 			velocity = velocity + v
 
 		velocity = velocity / delta
-	
+
 	return velocity
 
 func _get_angular_velocity():
@@ -72,7 +72,7 @@ func _get_angular_velocity():
 			velocity = velocity + v
 
 		velocity = velocity / delta
-	
+
 	return velocity
 
 func _on_Function_Pickup_entered(object):
@@ -97,13 +97,13 @@ func _update_closest_object():
 				var distance_squared = global_transform.origin.distance_squared_to(o.global_transform.origin)
 				if distance_squared < new_closest_distance:
 					new_closest_obj = o
-	
+
 					new_closest_distance = distance_squared
 	if closest_object != new_closest_obj:
 		# remove highlight on old object
 		if closest_object:
 			closest_object.decrease_is_closest()
-		
+
 		# add highlight to new object
 		closest_object = new_closest_obj
 		if closest_object:
@@ -120,11 +120,11 @@ func _pick_up_object(p_object):
 	# already holding this object, nothing to do
 	if picked_up_object == p_object:
 		return
-	
+
 	# holding something else? drop it
 	if picked_up_object:
 		drop_object()
-	
+
 	# and pick up our new object
 	if p_object:
 		picked_up_object = p_object
@@ -150,7 +150,7 @@ func _ready():
 	get_parent().connect("button_pressed", self, "_on_button_pressed")
 	get_parent().connect("button_release", self, "_on_button_release")
 	last_transform = global_transform
-	
+
 	# re-assign now that our collision shape has been constructed
 	set_pickup_range(pickup_range)
 
@@ -160,18 +160,18 @@ func _process(delta):
 	linear_velocities.push_back(linear_velocity)
 	if linear_velocities.size() > max_samples:
 		linear_velocities.pop_front()
-	
+
 	# Calculate our angular velocity
 	var delta_basis = global_transform.basis * last_transform.basis.inverse()
 	var angular_velocity = delta_basis.get_euler()
 	angular_velocities.push_back(angular_velocity)
 	if angular_velocities.size() > max_samples:
 		angular_velocities.pop_front()
-	
+
 	deltas.push_back(delta)
 	if deltas.size() > max_samples:
 		deltas.pop_front()
-	
+
 	last_transform = global_transform
 	_update_closest_object()
 

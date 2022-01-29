@@ -128,13 +128,13 @@ func physics_movement(delta: float, player_body: PlayerBody):
 # Perform rotation based on the players rotation controller input
 func _perform_player_rotation(delta: float, player_body: PlayerBody):
 	var left_right := _controller_node.get_joystick_axis(0)
-	
+
 	if abs(left_right) <= 0.1:
 		# Not turning
 		_turn_step = 0.0
 		return
 
-	# Handle smooth rotation		
+	# Handle smooth rotation
 	if smooth_rotation:
 		_rotate_player(player_body, smooth_turn_speed * delta * left_right)
 		return

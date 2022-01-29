@@ -84,7 +84,7 @@ func physics_movement(delta: float, player_body: PlayerBody):
 		is_gliding = false
 	else:
 		is_gliding = true
-	
+
 	# Detect if we're not gliding
 	if !is_gliding:
 		if old_is_gliding:
