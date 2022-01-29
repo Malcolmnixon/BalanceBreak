@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Funkeriffic.mp3-35bffaed469c86247b14071000bae437.mp3str"
+
+[deps]
+
+source_file="res://assets/freepd.com/Funkeriffic.mp3"
+dest_files=[ "res://.import/Funkeriffic.mp3-35bffaed469c86247b14071000bae437.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
