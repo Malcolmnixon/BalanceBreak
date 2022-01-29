@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/godot-xr-tools/objects/Object_climbable.gd" type="Script" id=1]
+[ext_resource path="res://assets/freesound.org/saber_humming/saber_humming.mp3" type="AudioStream" id=2]
+[ext_resource path="res://balance/climbing/Climbable.tres" type="Material" id=3]
+
+[sub_resource type="CylinderMesh" id=1]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 3.0
+radial_segments = 6
+rings = 1
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( 0, 1.5, 0.05, 0.0433013, 1.5, 0.025, -0.0433013, 1.5, 0.0249902, 0, -1.5, 0.05, 0.0432928, 1.5, -0.0250098, 0.0433013, -1.5, 0.025, -0.0433013, 1.5, -0.025, -0.0433013, -1.5, 0.0249902, 0, 1.5, -0.05, 0.0432928, -1.5, -0.0250098, -0.0433013, -1.5, -0.025, 0, -1.5, -0.05 )
+
+[node name="DrainPipe" type="StaticBody"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+shape = SubResource( 3 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )

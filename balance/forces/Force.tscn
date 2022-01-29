@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/godot-xr-tools/objects/Object_pickable.gd" type="Script" id=1]
+[ext_resource path="res://assets/freesound.org/saber_humming/saber_humming.mp3" type="AudioStream" id=2]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.2
+
+[sub_resource type="SphereMesh" id=2]
+radius = 0.2
+height = 0.4
+radial_segments = 16
+rings = 8
+
+[node name="Force" type="RigidBody"]
+can_sleep = false
+script = ExtResource( 1 )
+reset_transform_on_pickup = false
+highlight_mesh_instance = null
+
+[node name="PickupCenter" type="Spatial" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
